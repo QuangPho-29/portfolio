@@ -20,9 +20,8 @@
 
 <div id="container" class="container hidden">
     <div class="nav-container">
-        <div class="mode">
-            <i class="fa-solid fa-moon"></i>
-            <i class="fa-solid fa-sun"></i>
+        <div class="logo">
+            <h1>Henry<span>.</span></h1>
         </div>
 
         <ul class="navbar">
@@ -57,6 +56,55 @@
                 <div class="bar"></div>
             </li>
         </ul>
+
+        <div class="menu-button" onclick="toggleSidebar()">
+            <div class="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <div id="menu-logo" class="logo">
+                <h1>Henry<span>.</span> </h1>
+            </div>
+            <ul>
+                <li id="menu-home" onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#home">Home</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+                <li onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#about-me">About me</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+                <li onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#experience">Experience</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+                <li onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#education">Education</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+                <li onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#skills">Skills</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+                <li onclick="toggleSidebar()">
+                    <div class="dot"></div>
+                    <a href="#certificates">Certificates</a>
+<!--                    <div class="bar"></div>-->
+                </li>
+            </ul>
+            <div class="copyright">
+                <p><i>Designed and Built by <strong>Ta Quang Pho</strong> :D</i></p>
+            </div>
+        </div>
     </div>
 
     <div class="social">
@@ -67,40 +115,77 @@
 
     <div class="content">
         <div id="home" class="section">
-            <div id="home-content">
-                <h1>Hi ✌, I'm <strong>Pho</strong> Ta Quang.</h1>
-                <h3 class="green-scale-3">Business Analyst / Frontend Developer</h3>
+            <div id="home-content" class="text-content">
+                <h1>Hi ✌, I'm <span class="non-break"><span class="high-light">Pho</span> Ta Quang.</span></h1>
+                <h3 class="green-scale-3"><span class="non-break">Business Analyst</span> | <span class="non-break">Frontend Developer</span> </h3>
 
                 <div class="paragraph">
-                    <p>You can call me <span class="bold">Henry</span> ｡◕‿◕｡</p>
-                    <p>Just a young guy with a <span class="bold">big big</span> dream</p>
+<!--                    <h4>I build things for the web.</h4>-->
+                    <p>You can call me <strong class="bold">Henry.</strong> ｡◕‿◕｡</p>
+                    <br>
+                    <p>I enjoy analyzing the always <i>"easy to understand"</i> requirements of clients and providing solutions for <span class="note">System design</span>, as well as creating <span class="note">stunning User Interfaces</span> and <span class="note">highly intuitive User eXperiences</span> :D</p>
                 </div>
 
                 <div class="btn-box">
-                    <a href="mailto:pho.tq2903@gmail.com">Contact me</a>
+                    <a href="mailto:pho.tq2903@gmail.com" class="direct-button">Contact me</a>
                     <button class="high-five">High five 🖐️</button>
                 </div>
             </div>
-            <div id="home-img">
-                <img src="assets/profile.JPG" alt="Pho Ta Quang">
-                <div class="sub-img"></div>
-                <div class="sub-img"></div>
+            <div id="home-visual" class="visual-content">
+                <div id="home-img">
+                    <img src="assets/profile.JPG" alt="Pho Ta Quang">
+                    <div class="sub-img"></div>
+                    <div class="sub-img"></div>
+                </div>
             </div>
         </div>
         <div id="about-me" class="section">
-            <h2>About Me</h2>
-            <p>I am a skilled Business Analyst with experience in frontend development and AI research. My journey has been enriched by a variety of projects and roles, including volunteering and academic pursuits.</p>
+            <div class="text-content">
+                <h2>About Me</h2>
+                <p>
+                    Currently, I am a fourth-year student at <a href="https://hust.edu.vn/" target="_blank" class="note">HUST</a>, pursuing a degree in IT Engineering with a focus on <span class="note">Computer Science</span>.
+                    My interest in programming began in high school with an 11th-grade informatics class, where I wrote my first sorting algorithms and developed my programming mindset.
+                    Fast-forward to now, I have worked on a <a href="#" class="note">real-world project</a> and have completed several <a href="#" class="note">course projects</a> that have been highly regarded by my professors.
+                </p>
+                <p>
+                    I enjoy building systems where design and engineering <span class="note">intersect</span> — systems that are not only <span class="note">visually stunning</span> but also <span class="note">optimized</span> from the ground up.
+                    I aspire to a career that allows me to unleash my creativity by creating beautiful software and engaging user experiences.
+                </p>
+                <p>
+                    When I'm not working with computers, I love singing, dancing, and playing sports.
+                    I really enjoy singing, but others <span class="note">"really don't"</span> enjoy my performance :DDDD.
+                </p>
+            </div>
+            <div class="visual-content">
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <img class="img-slider" src="assets/headshot.png" alt="Headshot" id="img1"/>
+                        <img class="img-slider" src="assets/dancing.png" alt="Dancing contest" id="img2"/>
+                        <img class="img-slider" src="assets/smile.jpg" alt="12nd grade smile :)" id="img3"/>
+                        <img class="img-slider" src="assets/back.jpg" alt="My back :D" id="img4"/>
+                    </div>
+                    <div class="slider-button">
+                        <button id="prev"><</button>
+                        <button id="next">></button>
+                    </div>
+                    <div class="slider-nav">
+                        <a class="abc" href="#img1"></a>
+                        <a class="abc" href="#img2"></a>
+                        <a class="abc" href="#img3"></a>
+                        <a class="abc" href="#img4"></a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="experience" class="section">
-            <h2>Experience</h2>
-            <h3>Business Analyst & Frontend Developer at AASC</h3>
-            <p>Worked on a document management project using UML, BPMN, and React.</p>
+            <div class="text-content">
+                <h2>Experience</h2>
+                <h3>Business Analyst & Frontend Developer at AASC</h3>
+            </div>
+            <div class="visual-content">
 
-            <h3>Citizens Management for Local Governments</h3>
-            <p>University project involving CRUD operations and statistical analysis for managing citizen data and financial transactions.</p>
+            </div>
 
-            <h3>Volunteer at Volunteer Student Team</h3>
-            <p>Organized activities, taught children, and participated in campaigns.</p>
         </div>
         <div id="education" class="section">
             <h2>Education</h2>
