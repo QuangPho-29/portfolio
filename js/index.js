@@ -26,7 +26,7 @@ const observerNav = {
     threshold: 0.5,
 }
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const sectionId = entry.target.getAttribute('id');
