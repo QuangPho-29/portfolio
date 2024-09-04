@@ -26,7 +26,7 @@ const observerNav = {
     threshold: 0.5,
 }
 
-const observer = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const sectionId = entry.target.getAttribute('id');
@@ -42,6 +42,20 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
+let lastScrollTop = 0;
+const navbar = document.querySelector('.nav-container');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        // Scroll down
+        navbar.classList.add('hidden');
+    } else {
+        // Scroll up
+        navbar.classList.remove('hidden');
+    }
+    lastScrollTop = scrollTop;
+});
 
 // Toggle sidebar  -------------------------------------------
 const menuIcon = document.querySelector('.menu-icon');
@@ -137,4 +151,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateActiveNav();
+});
+
+// Experience Tabs ------------------------------------------
+
+const tabs = document.querySelectorAll('.tab');
+const tabContents = document.querySelectorAll('.text');
+const tabVisuals = document.querySelectorAll('.visual');
+
+let selectedTab = tabs[0];
+let selectedContent = tabContents[0];
+let selectedVisual = tabVisuals[0];
+
+tabs.forEach((tab, index) => {
+    tab.addEventListener('click', (e)=>{
+        e.preventDefault();
+        selectedTab.classList.remove('active');
+        tab.classList.add('active');
+        selectedTab = tab;
+
+        selectedContent.classList.remove('active');
+        tabContents[index].classList.add('active');
+        selectedContent = tabContents[index];
+
+        selectedVisual.classList.remove('active');
+        tabVisuals[index].classList.add('active');
+        selectedVisual = tabVisuals[index];
+    })
 });
