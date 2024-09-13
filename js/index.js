@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener('load', function() {
     setTimeout(function() {
         const loadingContainer = document.getElementById('loading-container');loadingContainer.style.opacity = '0';
         loadingContainer.classList.add('hidden');
         const container = document.getElementById('container');
         container.classList.remove('hidden');
-    }, 3000);
+    }, 1500);
 });
 
 // Navbar ---------------------------------------------------
@@ -44,6 +44,8 @@ sections.forEach(section => {
 
 let lastScrollTop = 0;
 const navbar = document.querySelector('.nav-container');
+const rocket = document.querySelector('.rocket');
+const homeHeight = document.getElementById('home').offsetHeight;
 
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -54,6 +56,13 @@ window.addEventListener('scroll', function() {
         // Scroll up
         navbar.classList.remove('hidden');
     }
+
+    if (scrollTop > homeHeight) {
+        rocket.classList.add('active');
+    } else {
+        rocket.classList.remove('active');
+    }
+
     lastScrollTop = scrollTop;
 });
 
