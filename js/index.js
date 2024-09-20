@@ -18,7 +18,6 @@ function selectNav(nav) {
 }
 
 const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.navbar li a');
 
 const observerNav = {
     root: null,
@@ -49,12 +48,12 @@ const homeHeight = document.getElementById('home').offsetHeight;
 
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
-        // Scroll down
-        navbar.classList.add('hidden');
-    } else {
+    if (scrollTop <= lastScrollTop) {
         // Scroll up
         navbar.classList.remove('hidden');
+    } else {
+        // Scroll down
+        navbar.classList.add('hidden');
     }
 
     if (scrollTop > homeHeight) {

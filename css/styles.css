@@ -37,6 +37,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background: none;
 }
 
 html {
@@ -371,7 +372,7 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 50;
+    z-index: 2;
     background: var(--nav-background-color);
     /*opacity: 0.9;*/
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -439,7 +440,7 @@ img {
         background: var(--nav-background-color);
         transition: all 0.3s ease-in-out;
 
-        z-index: 100;
+        z-index: 3;
 
         ul {
             display: flex;
@@ -481,7 +482,7 @@ img {
             position: absolute;
             right: 0;
             top: 0;
-            z-index: 200;
+            z-index: 4;
             overflow: visible;
 
             .bar {
@@ -697,17 +698,18 @@ img {
     align-items: center;
     gap: 2rem;
     padding: 2rem 8rem;
-
+    position: relative;
+    z-index: 1;
     height: 100vh;
+}
 
-    &:nth-child(odd) {
-        background: var(--background-color-1);
-    }
+.section:nth-child(odd) {
+    background: var(--background-color-1);
+}
 
-    &:nth-child(even) {
-        background: var(--background-color-2);
-        flex-direction: row-reverse;
-    }
+.section:nth-child(even) {
+    background: var(--background-color-2);
+    flex-direction: row-reverse;
 }
 
 .text-content {
@@ -784,7 +786,7 @@ img {
     border-radius: 10px;
     aspect-ratio: 4/5;
     object-position: top;
-    z-index: 2;
+    z-index: 1;
     box-shadow: 0 0 4px 0 var(--overlay-color);
     transition: transform 0.3s ease-in-out;
 }
@@ -995,6 +997,8 @@ img {
     justify-content: center;
     align-items: center;
 
+    position: relative;
+
     background: var(--overlay-color);
     color: var(--white-text-color);
     font-weight: 800;
@@ -1011,6 +1015,48 @@ img {
         transform: translate(0.25rem, -0.25rem);
         background: var(--green-scale-3);
         box-shadow: -0.25rem 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+.link[isInternal='true'] {
+    &::before {
+        content: 'Internal project';
+        position: absolute;
+        background-color: var(--green-scale-3);
+        color: white;
+        padding: 0 0.5rem;
+        border-radius: 1rem;
+        width: max-content;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        transform: translateY(-1rem) rotate(45deg);
+        opacity: 0;
+        transition: 0.2s cubic-bezier(0.40, 0, 0.44, 1.68);
+        font-size: 1rem;
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 0;
+        border-left: 0.5rem solid transparent;
+        border-right: 0.5rem solid transparent;
+        border-top: 0.5rem solid var(--green-scale-3);
+        transform: translateY(0) rotate(45deg);
+        opacity: 0;
+        transition: 0.2s cubic-bezier(0.40, 0, 0.44, 1.68);
+    }
+
+    &:hover::before {
+        opacity: 1;
+        transform: translateY(-3rem) rotate(0);
+    }
+
+    &:hover::after {
+        opacity: 1;
+        transform: translateY(-2rem) rotate(0);
     }
 }
 
@@ -1280,12 +1326,63 @@ img {
     transform: translateY(-2rem) rotate(0);
 }
 
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: conic-gradient(from var(--angle), transparent 20%, var(--green-scale-2));
+    z-index: -1;
+    border-radius: 0.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.25rem;
+    animation: 5s run linear infinite;
+}
+
+@keyframes run {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    padding: 0;
+
+    .card-one {
+        position: relative;
+        z-index: 2;
+        background: var(--background-color-1);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.05);
+    }
+}
+
 .css {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     font-weight: 800;
+    position: relative;
+    /*z-index: 2;*/
 
     img {
         width: 8rem;
@@ -1436,7 +1533,7 @@ img {
 
         position: absolute;
         top: 0;
-        z-index: 0;
+        /*z-index: -1;*/
         opacity: 0.1;
         padding: 2rem;
     }
